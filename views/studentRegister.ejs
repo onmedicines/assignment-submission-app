@@ -1,0 +1,53 @@
+<%- include('partials/studentHeader.ejs') %>
+<form class="student-register-form" action="/student-registered" method="post">
+  <div class="name-container">
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name" />
+  </div>
+  <div class="roll-number-container">
+    <label for="roll_number">Roll number:</label>
+    <input type="number" name="roll_number" id="roll_number" />
+  </div>
+  <div class="semester-container">
+    <label for="semester">Semester: </label>
+    <select name="semester" id="semester">
+      <option value=""></option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+    </select>
+  </div>
+  <div class="email-container">
+    <label for="email">Email:</label>
+    <input type="text" name="email" id="email" />
+  </div>
+  <div class="department-container">
+    <label>Subjects:</label>
+    <div class="checkbox-container">
+      <input type="checkbox" name="chem" />
+      <label for="">Chemistry</label>
+    </div>
+    <div class="checkbox-container">
+      <input type="checkbox" name="comp" />
+      <label for="">Computer Science</label>
+    </div>
+    <div class="checkbox-container">
+      <input type="checkbox" name="math" />
+      <label for="">Mathematics</label>
+    </div>
+    <div class="checkbox-container">
+      <input type="checkbox" name="phy" />
+      <label for="">Physics</label>
+    </div>
+  </div>
+  <div class="password-container">
+    <label for="password">Password:</label>
+    <input type="text" name="password" id="password" />
+  </div>
+  <button>Register</button>
+</form>
+
+<%- include('partials/studentFooter.ejs') %>

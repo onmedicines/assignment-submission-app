@@ -1,0 +1,33 @@
+<%- include('partials/facultyHeader.ejs') %>
+
+<form class="faculty-register-form" action="/faculty-registered" method="post">
+  <div class="name-container">
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name" />
+  </div>
+  <div class="id-container">
+    <label for="faculty_id">Faculty ID:</label>
+    <input type="number" name="faculty_id" id="faculty_id" />
+  </div>
+  <div class="department-container">
+    <label for="department">Department: </label>
+    <select name="department" id="department">
+      <option value=""></option>
+      <option value="Chemistry">Department of Chemistry</option>
+      <option value="ComputerScience">Department of Computer Science</option>
+      <option value="Mathematics">Department of Mathematics</option>
+      <option value="Physics">Department of Physics</option>
+    </select>
+  </div>
+  <div class="email-container">
+    <label for="email">Email:</label>
+    <input type="email" name="email" id="email" />
+  </div>
+  <div class="password-container">
+    <label for="password">Password:</label>
+    <input type="text" name="password" id="password" />
+  </div>
+  <button class="register-btn" type="submit">Register</button>
+</form>
+
+<%- include('partials/facultyFooter.ejs') %>

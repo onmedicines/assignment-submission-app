@@ -1,0 +1,35 @@
+<%- include('partials/studentProfileHeader.ejs') %>
+
+<div class="assignments-container">
+  <h1>Assignments</h1>
+  <table>
+    <tr>
+      <th>Subject</th>
+      <th>Status</th>
+      <th>Submit/View</th>
+      <th>Assignment Marks (/20)</th>
+      <th>Attendance Marks (/5)</th>
+    </tr>
+    <% for(let key in subjectObj){ %>
+    <tr>
+      <td><%= subjectObj[key] %></td>
+      <td><%= statusObj[key] %></td>
+      <td>
+        <form action="" method="post" enctype="multipart/form-data">
+          <input class="hidden-input" type="number" name="roll_number" value="<%= roll_number %>" />
+          <% if(statusObj[key]==='Not Submitted'){ %>
+          <input type="file" name="assignment<%= subjectObj[key] %>" id="assignment<%= subjectObj[key] %>" value="" />
+          <button type="submit" formaction="/submit<%= subjectObj[key] %>">Submit</button>
+          <% } else { %>
+          <button type="submit" formtarget="_blank" formaction="/view<%= subjectObj[key] %>">View</button>
+          <% } %>
+        </form>
+      </td>
+      <td><%= marksObj[key] %></td>
+      <td><%= attendanceMarksObj[key] %></td>
+    </tr>
+    <% } %>
+  </table>
+</div>
+
+<%- include('partials/studentProfileFooter.ejs') %>

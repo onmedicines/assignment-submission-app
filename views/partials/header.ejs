@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="body-wrapper">
+      <div class="body-wrapper-inner">
+        <section class="sidebar">
+          <h1 class="sidebar-title">Login/Register</h1>
+          <form method="get">
+            <button type="submit" formaction="/student-login">Student</button>
+            <button type="submit" formaction="/faculty-login">Faculty</button>
+          </form>
+          <p>by anurag semwal</p>
+        </section>
+        <section class="main-content">
+  <h1 class="app-title">ASSIGNMENT SUBMISSION PORTAL</h1>
+  
+  <% if(locals.message){ %>
+    <div class="message-container">
+    <p><%= message %></p>
+    </div>
+    <% }else{%>
+      <% if(locals.error){ %>
+          <div class="error-container">
+            <p><%= error %></p>
+          </div>
+      <% } else {%>
+        <div class="no-msg-container">
+          <p></p>
+        </div>
+        <% } %>
+    <% } %>
+  
+    

@@ -1,0 +1,23 @@
+<%- include('partials/facultyProfileHeader.ejs') %>
+
+<div class="details-container">
+  <h1>Details</h1>
+  <div class="faculty-deatils-container">
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Faculty ID</th>
+        <th>Department</th>
+        <th>Email</th>
+      </tr>
+      <tr>
+        <td><%= name %></td>
+        <td><%= faculty_id %></td>
+        <td><%= department %></td>
+        <td><%= email %></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<%- include('partials/facultyProfileFooter.ejs') %>

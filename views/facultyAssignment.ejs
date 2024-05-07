@@ -1,0 +1,150 @@
+<%- include('partials/facultyProfileHeader.ejs') %>
+<div class="assignments-container">
+  <h1>Sort By Semester/Roll Number</h1>
+  <div class="query-container">
+    <form class="faculty-choose-semester" action="/view-assignment-by-semester" method="post">
+      <input class="hidden-input" type="text" name="faculty_id" value="<%= faculty_id %>" />
+      <p>Semester:</p>
+      <div class="semester-container">
+        <select name="semester" id="semester">
+          <option value=""></option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+        </select>
+        <button type="submit">Search</button>
+      </div>
+    </form>
+    <form class="faculty-choose-roll" action="/view-assignment-by-roll-number" method="post">
+      <input class="hidden-input" type="text" name="faculty_id" value="<%= faculty_id %>" />
+      <p>Roll Number:</p>
+      <div class="roll-container">
+        <input type="number" name="roll_number" id="roll_number" />
+        <button type="submit">Search</button>
+      </div>
+    </form>
+  </div>
+  <% if(locals.assignments){ %>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Semester</th>
+      <th>Roll Number</th>
+      <th>View</th>
+      <th>Assignment Marks (/20)</th>
+      <th>Attendance Marks (/5)</th>
+    </tr>
+    <% for(let i in assignments){ %>
+    <tr>
+      <td><%= students[i].name %></td>
+      <td><%= students[i].semester %></td>
+      <td><%= students[i].roll_number %></td>
+      <td>
+        <form class="view-form" action="/view<%= faculty.department %>" target="_blank" method="post">
+          <input class="hidden-input" type="number" name="roll_number" value="<%= assignments[i].roll_number %>" />
+          <button type="submit">View Assignment</button>
+        </form>
+      </td>
+      <td>
+        <% if(locals.updateMarks){ %>
+        <form class="marks-update" action="/choose-semester-marks-update" method="post">
+          <input class="hidden-input" type="number" name="semester" value="<%= students[i].semester %>" />
+          <input class="hidden-input" type="number" name="roll_number" value="<%= students[i].roll_number %>" />
+          <input class="hidden-input" type="number" name="faculty_id" value="<%= faculty_id %>" />
+          <input type="number" name="marks" id="marks-input" max="20" value="<%= assignments[i].marks %>" />
+          <button type="submit">Update</button>
+        </form>
+        <% } else { %>
+        <form class="marks-edit" action="/choose-semester-marks-edit" method="post">
+          <input class="hidden-input" type="number" name="semester" value="<%= students[i].semester %>" />
+          <input class="hidden-input" type="number" name="faculty_id" value="<%= faculty_id %>" />
+          <p><%= assignments[i].marks %></p>
+          <button type="submit">Edit</button>
+        </form>
+        <% } %>
+      </td>
+      <td>
+        <% if(locals.updateAttendance){ %>
+        <form class="marks-update" action="/choose-semester-attendance-update" method="post">
+          <input class="hidden-input" type="number" name="semester" value="<%= students[i].semester %>" />
+          <input class="hidden-input" type="number" name="roll_number" value="<%= students[i].roll_number %>" />
+          <input class="hidden-input" type="number" name="faculty_id" value="<%= faculty_id %>" />
+          <input type="number" name="marks" id="attendance-input" max="5" value="<%= assignments[i].attendanceMarks %>" />
+          <button type="submit">Update</button>
+        </form>
+        <% } else { %>
+        <form class="marks-edit" action="/choose-semester-attendance-edit" method="post">
+          <input class="hidden-input" type="number" name="semester" value="<%= students[i].semester %>" />
+          <input class="hidden-input" type="number" name="faculty_id" value="<%= faculty_id %>" />
+          <p><%= assignments[i].attendanceMarks %></p>
+          <button type="submit">Edit</button>
+        </form>
+        <% } %>
+      </td>
+    </tr>
+    <% } %>
+  </table>
+  <% } if(locals.assignment){ %>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Semester</th>
+      <th>Roll Number</th>
+      <th>View Assignment</th>
+      <th>Assignment Marks (/20)</th>
+      <th>Attendance Marks (/5)</th>
+    </tr>
+    <tr>
+      <td><%= student.name %></td>
+      <td><%= student.semester %></td>
+      <td><%= student.roll_number %></td>
+      <td>
+        <form class="view-form" action="view<%= faculty.department %>" target="_blank" method="post">
+          <input class="hidden-input" type="number" name="roll_number" value="<%= student.roll_number %>" />
+          <button type="submit">View</button>
+        </form>
+      </td>
+      <td>
+        <% if(locals.update){ %>
+        <form class="marks-update" action="/choose-roll-marks-update" method="post">
+          <input class="hidden-input" type="number" name="roll_number" value="<%= student.roll_number %>" />
+          <input class="hidden-input" type="number" name="faculty_id" value="<%= faculty_id %>" />
+          <input type="number" name="marks" max="20" value="<%= assignment.marks %>" />
+          <button type="submit">Update</button>
+        </form>
+        <% } else { %>
+        <form class="marks-edit" action="/choose-roll-marks-edit" method="post">
+          <input class="hidden-input" type="number" name="roll_number" value="<%= student.roll_number %>" />
+          <input class="hidden-input" type="number" name="faculty_id" value="<%= faculty_id %>" />
+          <p><%= assignment.marks %></p>
+          <button type="submit">Edit</button>
+        </form>
+        <% } %>
+      </td>
+      <td>
+        <% if(locals.updateAttendance){ %>
+        <form class="marks-update" action="/choose-roll-attendance-update" method="post">
+          <input class="hidden-input" type="number" name="semester" value="<%= student.semester %>" />
+          <input class="hidden-input" type="number" name="roll_number" value="<%= student.roll_number %>" />
+          <input class="hidden-input" type="number" name="faculty_id" value="<%= faculty_id %>" />
+          <input type="number" name="marks" max="5" value="<%= assignment.attendanceMarks %>" />
+          <button type="submit">Update</button>
+        </form>
+        <% } else { %>
+        <form class="marks-edit" action="/choose-roll-attendance-edit" method="post">
+          <input class="hidden-input" type="number" name="semester" value="<%= student.semester %>" />
+          <input class="hidden-input" type="number" name="roll_number" value="<%= student.roll_number %>" />
+          <input class="hidden-input" type="number" name="faculty_id" value="<%= faculty_id %>" />
+          <p><%= assignment.attendanceMarks %></p>
+          <button type="submit">Edit</button>
+        </form>
+        <% } %>
+      </td>
+    </tr>
+  </table>
+  <% } %>
+</div>
+<%- include('partials/facultyProfileFooter.ejs') %>

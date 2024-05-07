@@ -1,0 +1,8 @@
+<%- include("header.ejs") %>
+
+  <div class="faculty-profile-container">
+  <form class="details-assignments-form"  method="post">
+    <input type="number" name="faculty_id" value="<%= faculty_id %>">
+    <button class="button" type="submit" formaction="/view-faculty-details">Details</button>
+    <button type="submit" formaction="/view-faculty-assignment">View Assignments</button>
+  </form>

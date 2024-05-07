@@ -1,0 +1,7 @@
+<%- include('header.ejs') %>
+<div class="student-profile-container">
+  <form class="details-assignments-form"  method="post">
+    <input type="number" name="roll_number" value="<%= roll_number %>">
+    <button type="submit" formaction="/view-student-details">Details</button>
+    <button type="submit" formaction="/view-student-assignment">Assignments</button>
+  </form>

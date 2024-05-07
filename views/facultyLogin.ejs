@@ -1,0 +1,15 @@
+<%- include('partials/facultyHeader.ejs') %>
+
+<form class="faculty-login-form" action="/faculty-details" method="post">
+  <div class="id-container">
+    <label for="faculty-login-id">Faculty ID:</label>
+    <input type="number" name="faculty_id" id="faculty-login-id" />
+  </div>
+  <div class="password-container">
+    <label for="faculty-login-password">Password:</label>
+    <input type="password" name="faculty_password" id="faculty-login-password" />
+  </div>
+  <button type="submit">Login</button>
+</form>
+
+<%- include('partials/facultyFooter.ejs') %>

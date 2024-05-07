@@ -1,0 +1,15 @@
+<%- include("partials/studentHeader.ejs") %>
+
+<form class="student-login-form" action="/student-details" method="post">
+  <div class="roll-container">
+    <label for="student-login-roll-">Roll Number:</label>
+    <input type="number" name="studentLoginRoll" id="student-login-roll-" />
+  </div>
+  <div class="password-container">
+    <label for="student-login-password">Password: </label>
+    <input type="password" name="studentLoginPassword" id="student-login-password" />
+  </div>
+  <button type="submit">Login</button>
+</form>
+
+<%- include("partials/studentFooter.ejs") %>
