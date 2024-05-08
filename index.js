@@ -20,7 +20,7 @@ app.use(fileUpload());
 app.listen(port, () => {
   console.log(`server running on port ${port}`);
 });
-mongoose.connect("mongodb+srv://anurag:<password>@cluster0.oeedyzr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
+mongoose.connect("mongodb+srv://anurag:naithani@cluster0.oeedyzr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
 
 // ============================ROUTES======================================
 app.get("/", (req, res) => {
