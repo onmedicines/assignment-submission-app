@@ -1,1 +1,5 @@
-This repo is a test repo for my semester assignment to upload it onto...whereever.
+**Why did I make this project?**  
+So, the main issue was that the students generally mailed their assignments to the email provided by the teachers. The issue with this was that a teacher teaches students from multiple semesters. Because of this the email of the professor became unorganized and it became difficult for a teacher to search for the assignment of a specific student or all the students of a specific semester. This web project solves that problem by providing an intuitive user interface to search for a single or multiple assignments.
+
+**How does this project solve the issue?**  
+The application features a user-friendly interface that facilitates easy registration and profile management for students. Upon registration, students can log in, view their personal details, and access their assignments. Teachers, on the other hand, can review the submitted assignments, search for specific student submissions, and assign grades directly through the platform. This structured approach not only enhances the organization of assignment data but also significantly reduces the administrative burden on teachers.
