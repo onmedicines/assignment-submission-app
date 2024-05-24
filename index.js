@@ -8,6 +8,7 @@ const ComputerScience = require("./mongoSchemas/ComputerScienceSchema");
 const Physics = require("./mongoSchemas/PhysicsSchema");
 const Chemistry = require("./mongoSchemas/ChemistrySchema");
 const Mathematics = require("./mongoSchemas/MathematicsSchema");
+const Admin = require("./mongoSchemas/adminSchema.js");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -20,7 +21,7 @@ app.use(fileUpload());
 app.listen(port, () => {
   console.log(`server running on port ${port}`);
 });
-mongoose.connect("mongodb+srv://anurag:naithani@cluster0.oeedyzr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
+mongoose.connect("mongodb://localhost/assignment_vercel");
 
 // ============================ROUTES======================================
 app.get("/", (req, res) => {
@@ -38,6 +39,50 @@ app.get("/faculty-login", (req, res) => {
 app.get("/faculty-register", (req, res) => {
   res.render("facultyRegister.ejs");
 });
+// ==============================New code==============================================
+
+app.get("/admin-login", (req, res) => {
+  res.render("adminLogin.ejs");
+});
+app.post("/admin-details", async (req, res) => {
+  try {
+    const username = req.body.adminUsername;
+    if (username === "") throw "no_username";
+    const password = req.body.adminPassword;
+    if (password === "") throw "no_password";
+
+    const admin = await Admin.findOne({ username: username });
+
+    if (admin === null) throw "username_incorrect";
+    if (admin.password === password) {
+      res.render("adminProfile.ejs", {
+        admin: admin,
+      });
+    } else {
+      throw "password_incorrect";
+    }
+  } catch (err) {
+    if (err === "no_username") {
+      res.render("adminLogin.ejs", {
+        error: "Username Required",
+      });
+    } else if (err === "username_incorrect") {
+      res.render("adminLogin.ejs", {
+        error: "Username incorrect",
+      });
+    } else if (err === "no_password") {
+      res.render("adminLogin.ejs", {
+        error: "Password Required",
+      });
+    } else if (err === "password_incorrect") {
+      res.render("adminLogin.ejs", {
+        error: "Wrong password",
+      });
+    }
+  }
+});
+
+// ==============================New code==============================================
 app.post("/student-registered", async (req, res) => {
   try {
     const name = req.body.name;

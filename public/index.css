@@ -26,7 +26,7 @@ input::-webkit-inner-spin-button {
     height: 100%;
 
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 1fr 5fr;
     .sidebar {
       background: rgb(48, 84, 113);
       height: 100%;
@@ -133,7 +133,8 @@ input::-webkit-inner-spin-button {
             }
           }
 
-          .student-login-form {
+          .student-login-form,
+          .admin-login-form {
             padding: 1rem 0;
             display: flex;
             flex-direction: column;

@@ -1,0 +1,18 @@
+<%- include("partials/header.ejs") %>
+<div class="main-content-wrapper">
+  <h1>Admin</h1>
+  <div class="forms-container">
+    <form class="admin-login-form" action="/admin-details" method="post">
+      <div class="roll-container">
+        <label for="admin-login-username">Username:</label>
+        <input type="string" name="adminUsername" id="admin-username" />
+      </div>
+      <div class="password-container">
+        <label for="student-login-password">Password:</label>
+        <input type="password" name="adminPassword" id="student-password" />
+      </div>
+      <button type="submit">Login</button>
+    </form>
+  </div>
+</div>
+<%- include("partials/footer.ejs") %>
