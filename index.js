@@ -23,7 +23,7 @@ app.listen(port, () => {
 });
 mongoose.connect("mongodb://localhost/assignment_vercel");
 
-// ============================ROUTES======================================
+// ============================ROUTES====================================
 app.get("/", (req, res) => {
   res.render("studentLogin.ejs");
 });
@@ -39,7 +39,7 @@ app.get("/faculty-login", (req, res) => {
 app.get("/faculty-register", (req, res) => {
   res.render("facultyRegister.ejs");
 });
-// ==============================New code==============================================
+// ==============================New code=================================
 
 app.get("/admin-login", (req, res) => {
   res.render("adminLogin.ejs");
@@ -82,7 +82,7 @@ app.post("/admin-details", async (req, res) => {
   }
 });
 
-// ==============================New code==============================================
+// ==============================New code===================================
 app.post("/student-registered", async (req, res) => {
   try {
     const name = req.body.name;
@@ -176,28 +176,28 @@ app.post("/faculty-registered", async (req, res) => {
       password: password,
     });
 
-    res.render("facultyRegister.ejs", {
+    res.render("adminProfile.ejs", {
       message: "Faculty registered successfully.",
     });
   } catch (err) {
     if (err === "noname") {
-      res.render("facultyRegister.ejs", {
+      res.render("adminProfile.ejs", {
         error: "Name required.",
       });
     } else if (err === "noid") {
-      res.render("facultyRegister.ejs", {
+      res.render("adminProfile.ejs", {
         error: "Faculty ID required.",
       });
     } else if (err === "nodept") {
-      res.render("facultyRegister.ejs", {
+      res.render("adminProfile.ejs", {
         error: "Department required.",
       });
     } else if (err === "noemail") {
-      res.render("facultyRegister.ejs", {
+      res.render("adminProfile.ejs", {
         error: "Email required.",
       });
     } else if (err === "nopass") {
-      res.render("facultyRegister.ejs", {
+      res.render("adminProfile.ejs", {
         error: "Password required.",
       });
     }
